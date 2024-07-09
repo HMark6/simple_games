@@ -1,37 +1,63 @@
 def start_game():
-    print("Üdvözöllek a kalandjátékban!")
-    print("Egy erdőben ébredsz, és három irányba mehetsz: észak, dél vagy nyugat.")
-    choice = input("Merre mész? (észak/dél/nyugat): ").strip().lower()
+    print("******************************")
+    print("      The Forest Adventure")
+    print("******************************")
+    print("Welcome to the adventure game!")
+    print("You wake up in a forest and can go in three directions: north, south, or west.")
+    choice = input("Which way do you go? (north/south/west): ").strip().lower()
 
-    if choice == "észak":
+    if choice == "north":
         north()
-    elif choice == "dél":
+    elif choice == "south":
         south()
-    elif choice == "nyugat":
+    elif choice == "west":
         west()
     else:
-        print("Nem érvényes választás. Próbáld újra!")
+        print("Invalid choice. Please try again!")
         start_game()
 
 def north():
-    print("Egy farkassal találkozol, és sajnos elveszted a játékot.")
-    restart_game()
+    print("You encounter a wolf.")
+    print("1. Fight the wolf")
+    print("2. Run away")
+    choice = input("What do you do? (1/2): ").strip()
+    
+    if choice == "1":
+        print("The wolf was too strong. Unfortunately, you lose the game.")
+        restart_game()
+    elif choice == "2":
+        print("You successfully escaped. You return to the starting point.")
+        start_game()
+    else:
+        print("Invalid choice. Please try again!")
+        north()
 
 def south():
-    print("Egy elhagyatott házra bukkansz, és semmi érdekeset nem találsz.")
-    print("Visszamész a kiindulópontra.")
-    start_game()
+    print("You come across an abandoned house.")
+    print("1. Enter the house")
+    print("2. Move on")
+    choice = input("What do you do? (1/2): ").strip()
+
+    if choice == "1":
+        print("You find nothing interesting in the house. You return to the starting point.")
+        start_game()
+    elif choice == "2":
+        print("You move on but find nothing interesting. You return to the starting point.")
+        start_game()
+    else:
+        print("Invalid choice. Please try again!")
+        south()
 
 def west():
-    print("Megtalálod a kijáratot! Gratulálok, nyertél!")
+    print("You find the exit! Congratulations, you win!")
     restart_game()
 
 def restart_game():
-    choice = input("Szeretnéd újra játszani? (igen/nem): ").strip().lower()
-    if choice == "igen":
+    choice = input("Do you want to play again? (yes/no): ").strip().lower()
+    if choice == "yes":
         start_game()
     else:
-        print("Köszönöm, hogy játszottál!")
+        print("Thanks for playing!")
 
 if __name__ == "__main__":
     start_game()
